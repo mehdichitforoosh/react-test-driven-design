@@ -14,6 +14,6 @@ describe('Appointment', () => {
 
         ReactDOM.render(component, container);
 
-        expect(document.body.textContent).toMatch('Ashley');
+        expect(document.body.textContent).toMatch(customer.firstName);
     })
 })

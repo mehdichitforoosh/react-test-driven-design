@@ -37,22 +37,21 @@ describe('Appointment', () => {
 
 describe('Appointments Day View', () => {
 
-    let appointments;
+    const today = new Date();
+    const appointments = [
+        {
+            startsAt: today.setHours(12, 0),
+        },
+        {
+            startsAt: today.setHours(13, 0),
+        }
+    ];
     let container;
 
     const render = component => ReactDOM.render(component, container);
 
     beforeEach(() => {
         container = document.createElement('div');
-        const today = new Date();
-        appointments = [
-            {
-                startsAt: today.setHours(12, 0),
-            },
-            {
-                startsAt: today.setHours(13, 0),
-            }
-        ];
     })
 
     it('renders a div with right id', () => {

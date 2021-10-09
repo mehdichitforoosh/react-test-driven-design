@@ -11,28 +11,25 @@ describe('Appointment', () => {
     let customer;
     let container;
 
+    const render = component => ReactDOM.render(component, container);
+
     beforeEach(() => {
         container = document.createElement('div');
-        document.body.innerHTML = '';
     })
 
     it('renders the customer first name', () => {
         customer = { firstName: 'Ashley' };
-        const component = <Appointment customer={customer} />;
-        document.body.appendChild(container);
 
-        ReactDOM.render(component, container);
+        render(<Appointment customer={customer} />);
 
-        expect(document.body.textContent).toBe(customer.firstName);
+        expect(container.textContent).toBe(customer.firstName);
     })
 
     it('renders another customer first name', () => {
         customer = { firstName: 'Jordan' }
-        const component = <Appointment customer={customer} />
-        document.body.appendChild(container);
 
-        ReactDOM.render(component, container);
+        render(<Appointment customer={customer} />);
 
-        expect(document.body.textContent).toBe(customer.firstName);
+        expect(container.textContent).toBe(customer.firstName);
     })
 })

@@ -41,9 +41,11 @@ describe('Appointments Day View', () => {
     const appointments = [
         {
             startsAt: today.setHours(12, 0),
+            customer: { firstName: 'Ashley' },
         },
         {
             startsAt: today.setHours(13, 0),
+            customer: { firstName: 'Jordan' },
         }
     ];
     let container;
@@ -60,6 +62,21 @@ describe('Appointments Day View', () => {
 
         expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
     })
+
+    it('renders an empty message if there is no appointments today', () => {
+
+        render(<AppointmentsDayView appointments={[]} />);
+
+        expect(container.querySelector('p').textContent).toEqual('There are no appointments scheduled for today.');
+    })
+
+    it('renders first appointment item in view section ', () => {
+
+        render(<AppointmentsDayView appointments={appointments} />);
+
+        expect(container.textContent).toMatch('Ashley');
+    })
+
 
     it('renders multiple appointments in an ol element', () => {
 

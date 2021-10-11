@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactTestUtils from 'react-dom/test-utils'
 import { Appointment } from '../src/components/Appointment';
 import { AppointmentsDayView } from '../src/components/AppointmentsDayView';
 
@@ -75,6 +76,25 @@ describe('Appointments Day View', () => {
         render(<AppointmentsDayView appointments={appointments} />);
 
         expect(container.textContent).toMatch('Ashley');
+    })
+
+    it('renders a button element in each li element', () => {
+
+        render(<AppointmentsDayView appointments={appointments} />);
+
+        expect(container.querySelectorAll('li > button')).toHaveLength(2);
+        expect(container.querySelectorAll('li > button')[0].type).toEqual('button');
+    })
+
+    it('renders selected item and show view with appointment customer first name', () => {
+
+        render(<AppointmentsDayView appointments={appointments} />);
+
+        const button = container.querySelectorAll('button')[1];
+
+        ReactTestUtils.Simulate.click(button);
+
+        expect(container.textContent).toMatch(appointments[1].customer.firstName);
     })
 
 

@@ -24,7 +24,7 @@ describe('Appointment', () => {
 
         render(<Appointment customer={customer} />);
 
-        expect(container.textContent).toBe(customer.firstName);
+        expect(container.textContent).toMatch(customer.firstName);
     })
 
     it('renders another customer first name', () => {
@@ -32,7 +32,7 @@ describe('Appointment', () => {
 
         render(<Appointment customer={customer} />);
 
-        expect(container.textContent).toBe(customer.firstName);
+        expect(container.textContent).toMatch(customer.firstName);
     })
 })
 
@@ -111,7 +111,7 @@ describe('Appointments Day View', () => {
         render(<AppointmentsDayView appointments={appointments} />);
 
         expect(container.querySelectorAll('li')).toHaveLength(2);
-        expect(container.querySelectorAll('li')[0].textContent).toEqual('12:00');
-        expect(container.querySelectorAll('li')[1].textContent).toEqual('13:00');
+        expect(container.querySelectorAll('li')[0].textContent).toMatch('12:00');
+        expect(container.querySelectorAll('li')[1].textContent).toMatch('13:00');
     })
 })

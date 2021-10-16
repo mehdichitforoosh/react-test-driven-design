@@ -69,4 +69,16 @@ describe('Customer From', () => {
         await ReactTestUtils.Simulate.submit(form('customer'));
     })
 
+    it('saves new first name when form submits', async () => {
+
+        expect.hasAssertions();
+
+        render(<CustomerForm firstName="Ashley" onSubmit={({ firstName }) => expect(firstName).toEqual('Jamie')} />);
+
+        await ReactTestUtils.Simulate.change(field('customer', 'firstName'), {
+            target: { value: 'Jamie' }
+        });
+
+        await ReactTestUtils.Simulate.submit(form('customer'));
+    })
 })

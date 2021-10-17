@@ -21,6 +21,7 @@ export const CustomerForm = ({ firstName, lastName, onSubmit }) => {
             <input type="text" id="lastName" name="lastName"
                 value={customer.lastName}
                 onChange={handleChange} />
+            <input type="submit" value="Add" />
         </form>
     )
 }

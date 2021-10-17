@@ -61,7 +61,7 @@ describe('Customer From', () => {
             expect.hasAssertions();
             render(<CustomerForm {...{ [fieldName]: value }} onSubmit={(obj) => expect(obj[fieldName]).toEqual(value)} />);
             await ReactTestUtils.Simulate.change(field(formName, fieldName), {
-                target: { value }
+                target: { value, name: fieldName }
             })
             await ReactTestUtils.Simulate.submit(form(formName));
         })

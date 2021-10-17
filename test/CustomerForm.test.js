@@ -72,9 +72,7 @@ describe('Customer From', () => {
     })
 
     it('renders a form', () => {
-
         render(<CustomerForm />);
-
         expect(form("customer")).not.toBeNull();
     })
 
@@ -88,58 +86,12 @@ describe('Customer From', () => {
     });
 
     describe('Last name field test', () => {
-
-        it('renders the last name field as text box', () => {
-
-            render(<CustomerForm />);
-
-            expectToBeInputFieldOfTypeText(field('customer', 'lastName'));
-        })
-
-        it('includes the existing value for the last name', () => {
-            render(<CustomerForm firstName="Ashley" lastName="Whittall" />);
-
-            expect(field('customer', 'lastName').value).toEqual('Whittall');
-        })
-
-        it('renders a label for the last name', () => {
-
-            render(<CustomerForm firstName="Ashley" lastName="Whittall" />);
-
-            expect(labelsFor('lastName')).not.toBeNull();
-            expect(labelsFor('lastName').textContent).toEqual('Last Name');
-        })
-
-        it('assigns an id  that matches label id for the last name', () => {
-
-            render(<CustomerForm firstName="Ashley" lastName="Whittall" />);
-
-            expect(field('customer', 'lastName').id).toEqual('lastName');
-        })
-
-
-        it('saves last name when form submits', async () => {
-
-            expect.hasAssertions();
-
-            render(<CustomerForm firstName="Ashley" lastName="Whittall" onSubmit={({ lastName }) => expect(lastName).toEqual('Whittall')} />);
-
-            await ReactTestUtils.Simulate.submit(form('customer'));
-        })
-
-        it('saves new last name when form submits', async () => {
-
-            expect.hasAssertions();
-
-            render(<CustomerForm firstName="Ashley" lastName="Whittall" onSubmit={({ lastName }) => expect(lastName).toEqual('James')} />);
-
-            await ReactTestUtils.Simulate.change(field('customer', 'lastName'), {
-                target: { value: 'James' }
-            })
-
-            await ReactTestUtils.Simulate.submit(form('customer'));
-        })
-
+        itRendersAsTextBox('customer', 'lastName');
+        itIncludesTheExistingValue('customer', 'lastName');
+        itRendersALabelForFieldName('lastName', 'Last Name');
+        itAssignsAndIdThatMatchesTheLabelId('customer', 'lastName');
+        itSubmitsExistingValue('customer', 'lastName', 'Whittall');
+        itSubmitsNewValue('customer', 'lastName', 'Jamie');
     });
 
 })

@@ -5,7 +5,6 @@ export const CustomerForm = ({ firstName, lastName, onSubmit }) => {
     const [customer, setCustomer] = useState({ firstName, lastName });
 
     const handleChangeFirstName = ({ target }) => {
-        console.log(target);
         setCustomer(customer => ({
             ...customer,
             firstName: target.value
@@ -13,7 +12,6 @@ export const CustomerForm = ({ firstName, lastName, onSubmit }) => {
     }
 
     const handleChangeLastName = ({ target }) => {
-        console.log(target);
         setCustomer(customer => ({
             ...customer,
             lastName: target.value
